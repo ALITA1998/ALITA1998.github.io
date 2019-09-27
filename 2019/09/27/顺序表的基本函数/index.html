@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="顺序表以及基本函数的定义(c实现)： 定义一个结构体将顺序表以及其长度封装: 123456789101112#define MAXLEN 100typedef int elementType;struct sList&amp;#123;    elementType data[MAXLEN];    int listLen;&amp;#125;;typedef struct sList seqList;  定义基">
+<meta name="description" content="顺序表以及基本函数的定义(c实现)： 定义一个结构体将顺序表以及其长度封装: 123456789101112#define MAXLEN 100typedef int elementType;struct sList&amp;#123;    elementType data[MAXLEN];    int listLen;&amp;#125;;typedef struct sList seqList;">
 <meta name="keywords" content="基础">
 <meta property="og:type" content="article">
 <meta property="og:title" content="顺序表的基本函数">
 <meta property="og:url" content="http://yoursite.com/2019/09/27/顺序表的基本函数/index.html">
 <meta property="og:site_name" content="ALITA&#39;s blog">
-<meta property="og:description" content="顺序表以及基本函数的定义(c实现)： 定义一个结构体将顺序表以及其长度封装: 123456789101112#define MAXLEN 100typedef int elementType;struct sList&amp;#123;    elementType data[MAXLEN];    int listLen;&amp;#125;;typedef struct sList seqList;  定义基">
+<meta property="og:description" content="顺序表以及基本函数的定义(c实现)： 定义一个结构体将顺序表以及其长度封装: 123456789101112#define MAXLEN 100typedef int elementType;struct sList&amp;#123;    elementType data[MAXLEN];    int listLen;&amp;#125;;typedef struct sList seqList;">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-27T05:31:51.660Z">
+<meta property="og:updated_time" content="2019-09-27T10:20:32.633Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="顺序表的基本函数">
-<meta name="twitter:description" content="顺序表以及基本函数的定义(c实现)： 定义一个结构体将顺序表以及其长度封装: 123456789101112#define MAXLEN 100typedef int elementType;struct sList&amp;#123;    elementType data[MAXLEN];    int listLen;&amp;#125;;typedef struct sList seqList;  定义基">
+<meta name="twitter:description" content="顺序表以及基本函数的定义(c实现)： 定义一个结构体将顺序表以及其长度封装: 123456789101112#define MAXLEN 100typedef int elementType;struct sList&amp;#123;    elementType data[MAXLEN];    int listLen;&amp;#125;;typedef struct sList seqList;">
 
 
 
@@ -303,6 +303,8 @@
         <p>顺序表以及基本函数的定义(c实现)：</p>
 <p>定义一个结构体将顺序表以及其长度封装:</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXLEN 100</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> elementType;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sList</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    elementType data[MAXLEN];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> listLen;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">sList</span> <span class="title">seqList</span>;</span></span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
 
 <p>定义基本函数：</p>
 <p>/<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>*****</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>注意所有函数中i为数组下标</p>
