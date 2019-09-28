@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="爬！,">
+  <meta name="keywords" content="基础,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="1234567891011121314import requestsdef getHTMLText(url):try:            r = requests.get(url, timeout=30)            r.raise_for_status()     #查找异常    r.encoding = r.apparent_encoding    return r.texte">
-<meta name="keywords" content="爬！">
+<meta name="description" content="本片文章将介绍顺序表交并集函数（存放到一个新的顺序表中），其中用到的基本函数在之前的“顺序表的基本函数”文章里，可以自行查看。">
+<meta name="keywords" content="基础">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python爬虫的基本框架">
-<meta property="og:url" content="http://yoursite.com/2019/09/27/python爬虫的基本框架/index.html">
+<meta property="og:title" content="顺序表的交并集">
+<meta property="og:url" content="http://yoursite.com/2019/09/28/顺序表的交并集/index.html">
 <meta property="og:site_name" content="ALITA&#39;s blog">
-<meta property="og:description" content="1234567891011121314import requestsdef getHTMLText(url):try:            r = requests.get(url, timeout=30)            r.raise_for_status()     #查找异常    r.encoding = r.apparent_encoding    return r.texte">
+<meta property="og:description" content="本片文章将介绍顺序表交并集函数（存放到一个新的顺序表中），其中用到的基本函数在之前的“顺序表的基本函数”文章里，可以自行查看。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-28T02:29:58.166Z">
+<meta property="og:updated_time" content="2019-09-28T12:44:17.817Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="python爬虫的基本框架">
-<meta name="twitter:description" content="1234567891011121314import requestsdef getHTMLText(url):try:            r = requests.get(url, timeout=30)            r.raise_for_status()     #查找异常    r.encoding = r.apparent_encoding    return r.texte">
+<meta name="twitter:title" content="顺序表的交并集">
+<meta name="twitter:description" content="本片文章将介绍顺序表交并集函数（存放到一个新的顺序表中），其中用到的基本函数在之前的“顺序表的基本函数”文章里，可以自行查看。">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/09/27/python爬虫的基本框架/">
+  <link rel="canonical" href="http://yoursite.com/2019/09/28/顺序表的交并集/">
 
 
 
 
 
-  <title>python爬虫的基本框架 | ALITA's blog</title>
+  <title>顺序表的交并集 | ALITA's blog</title>
   
 
 
@@ -283,7 +283,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/27/python爬虫的基本框架/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/28/顺序表的交并集/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="9s">
@@ -300,7 +300,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">python爬虫的基本框架</h1>
+          <h1 class="post-title" itemprop="name headline">顺序表的交并集</h1>
         
 
         <div class="post-meta">
@@ -312,8 +312,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-27T13:24:24+08:00">
-                2019-09-27
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-28T18:43:29+08:00">
+                2019-09-28
               </time>
             
 
@@ -335,8 +335,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index">
-                    <span itemprop="name">python</span>
+                  <a href="/categories/顺序表/" itemprop="url" rel="index">
+                    <span itemprop="name">顺序表</span>
                   </a>
                 </span>
 
@@ -372,9 +372,19 @@
       
 
       
-        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getHTMLText</span><span class="params">(url)</span>:</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">            r = requests.get(url, timeout=<span class="number">30</span>)</span><br><span class="line">            r.raise_for_status()     <span class="comment">#查找异常</span></span><br><span class="line">    r.encoding = r.apparent_encoding</span><br><span class="line">    <span class="keyword">return</span> r.text</span><br><span class="line"></span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'异常'</span></span><br><span class="line">    <span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">        url = <span class="string">'https://www.bilibili.com'</span>       <span class="comment">#以B站为例</span></span><br><span class="line">    print(getHTMLText(url))</span><br></pre></td></tr></table></figure>
+        <p>本片文章将介绍顺序表交并集函数（存放到一个新的顺序表中），其中用到的基本函数在之前的“顺序表的基本函数”文章里，可以自行查看。</p>
+<a id="more"></a>
 
-<p>应用以上代码可以爬去网站的基本信息。</p>
+<p>[D:\blog\Hexo\source_posts\顺序表的基本函数.md]:</p>
+<p>并集代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ListMerg</span><span class="params">(seqList A,seqList B,seqList &amp;C)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">    elementType x;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>;i &lt; A.listLen;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        x = getElement(A,i);</span><br><span class="line">        listInsert(&amp;C,x,i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>;i &lt; B.listLen;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        x= getElement(B,i);</span><br><span class="line">        <span class="keyword">if</span>(listLocate(A,x) == <span class="number">-1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(listInsert(C,x,C -&gt; listLen) == <span class="number">-2</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>交集代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">listOccur</span><span class="params">(seqList A,seqList B,seqList &amp;C)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    elementType x;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>;i &lt; A.listLen;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        x = getElement(A,i);</span><br><span class="line">        <span class="keyword">if</span>(listLocte(B,x) != <span class="number">-1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            listInsert(&amp;C,x,C.listLen);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>若两个顺序表递增有序，为了减小时间复杂度并且节省内存空间我们也可将交集存放在原来的两个数组的其中一个，代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ListMerg</span><span class="params">(seqList &amp;A,seqList &amp;B)</span>                      <span class="comment">//A，B都是递增有序顺序表</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>,j = <span class="number">0</span>,ia = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(i &lt; A.listLen &amp;&amp; ｊ&lt; B.listLen)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(A.data[i] &lt; B.data[j])</span><br><span class="line">        &#123;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(A.data[i] == B.data[j])</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(ia != i)</span><br><span class="line">            &#123;</span><br><span class="line">                A.data[ia] = A.data[i];</span><br><span class="line">            &#125;</span><br><span class="line">            ia++;</span><br><span class="line">            i++;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    A.listLen = ia;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -392,7 +402,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/爬！/" rel="tag"># 爬！</a>
+            <a href="/tags/基础/" rel="tag"># 基础</a>
           
         </div>
       
@@ -405,8 +415,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/27/顺序表的基本函数/" rel="next" title="顺序表的基本函数">
-                <i class="fa fa-chevron-left"></i> 顺序表的基本函数
+              <a href="/2019/09/27/use-file/" rel="next" title="use file in Python to do something(1)">
+                <i class="fa fa-chevron-left"></i> use file in Python to do something(1)
               </a>
             
           </div>
@@ -414,10 +424,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/09/27/use-file/" rel="prev" title="use file in Python to do something(1)">
-                use file in Python to do something(1) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
