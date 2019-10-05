@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="ALITA&#39;s blog">
 <meta property="og:description" content="本片文章将介绍顺序表交并集函数（存放到一个新的顺序表中），其中用到的基本函数在之前的“顺序表的基本函数”文章里，可以自行查看。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-28T12:44:17.817Z">
+<meta property="og:updated_time" content="2019-10-05T06:59:10.687Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="顺序表的交并集">
 <meta name="twitter:description" content="本片文章将介绍顺序表交并集函数（存放到一个新的顺序表中），其中用到的基本函数在之前的“顺序表的基本函数”文章里，可以自行查看。">
@@ -375,7 +375,6 @@
         <p>本片文章将介绍顺序表交并集函数（存放到一个新的顺序表中），其中用到的基本函数在之前的“顺序表的基本函数”文章里，可以自行查看。</p>
 <a id="more"></a>
 
-<p>[D:\blog\Hexo\source_posts\顺序表的基本函数.md]:</p>
 <p>并集代码如下：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ListMerg</span><span class="params">(seqList A,seqList B,seqList &amp;C)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">    elementType x;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>;i &lt; A.listLen;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        x = getElement(A,i);</span><br><span class="line">        listInsert(&amp;C,x,i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>;i &lt; B.listLen;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        x= getElement(B,i);</span><br><span class="line">        <span class="keyword">if</span>(listLocate(A,x) == <span class="number">-1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(listInsert(C,x,C -&gt; listLen) == <span class="number">-2</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -497,7 +496,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
