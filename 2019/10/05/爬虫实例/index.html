@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="ALITA&#39;s blog">
 <meta property="og:description" content="下面介绍几个爬虫实例。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-10-05T14:50:33.491Z">
+<meta property="og:updated_time" content="2019-10-05T15:06:03.105Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="爬虫实例">
 <meta name="twitter:description" content="下面介绍几个爬虫实例。">
@@ -375,7 +375,12 @@
         <p>下面介绍几个爬虫实例。</p>
 <a id="more"></a>
 
-<h2 id="爬取图片并保存到本地"><a href="#爬取图片并保存到本地" class="headerlink" title="爬取图片并保存到本地"></a>爬取图片并保存到本地</h2>
+<h2 id="爬取图片并保存到本地"><a href="#爬取图片并保存到本地" class="headerlink" title="爬取图片并保存到本地"></a>爬取图片并保存到本地</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line">url = <span class="string">'https://www.acfun.cn/v/ac11215410'</span></span><br><span class="line">root = <span class="string">'D://pics//'</span></span><br><span class="line">path = root + url.split(<span class="string">'/'</span>)[<span class="number">-1</span>]</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(root) :</span><br><span class="line">        os.mkdir(root)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(path) :</span><br><span class="line">        r = requests.get(url)</span><br><span class="line">        <span class="keyword">with</span> open(path, <span class="string">'wb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">            f.write(r.content)</span><br><span class="line">            f.close()</span><br><span class="line">            print(<span class="string">'文件已保存'</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">'文件已存在'</span>)</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">    print(<span class="string">'爬取失败'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>os库的具体函数这里不做详细介绍，这里不仅仅是文件，任何二进制编码的文件都可以用这个代码爬取保持。</p>
+<h2 id="获取ip地址的物理位置"><a href="#获取ip地址的物理位置" class="headerlink" title="获取ip地址的物理位置"></a>获取ip地址的物理位置</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">url = <span class="string">'http://m.ip138.com/ip.asp?ip='</span>      </span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    r = requests.get(url+<span class="string">'请输入ip地址'</span>)             <span class="comment">#输入Ip</span></span><br><span class="line">    r.raise_for_status()</span><br><span class="line">    r.encoding = r.apparent_encoding</span><br><span class="line">    print(r.text[<span class="number">-500</span>:])</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">    print(<span class="string">'爬取失败'</span>)</span><br></pre></td></tr></table></figure>
+
+
       
     </div>
     
@@ -557,7 +562,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#爬取图片并保存到本地"><span class="nav-number">1.</span> <span class="nav-text">爬取图片并保存到本地</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#爬取图片并保存到本地"><span class="nav-number">1.</span> <span class="nav-text">爬取图片并保存到本地</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取ip地址的物理位置"><span class="nav-number">2.</span> <span class="nav-text">获取ip地址的物理位置</span></a></li></ol></div>
             
 
           </div>
