@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="进阶,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="下面展示一下交互式顺序表的代码（可白嫖，不解释）：">
+<meta name="keywords" content="进阶">
+<meta property="og:type" content="article">
+<meta property="og:title" content="交互式顺序表">
+<meta property="og:url" content="http://www.liuli9s.com/2019/10/31/交互式顺序表/index.html">
+<meta property="og:site_name" content="ALITA&#39;s blog">
+<meta property="og:description" content="下面展示一下交互式顺序表的代码（可白嫖，不解释）：">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-10-31T14:43:41.275Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="交互式顺序表">
+<meta name="twitter:description" content="下面展示一下交互式顺序表的代码（可白嫖，不解释）：">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.liuli9s.com/2019/10/31/交互式顺序表/">
+
+
+
+
+
+  <title>交互式顺序表 | ALITA's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ALITA's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">For C,C++,Python,JAVA</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            Schedule
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            Sitemap
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.liuli9s.com/2019/10/31/交互式顺序表/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="9s">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/mdz.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ALITA's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">交互式顺序表</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-31T22:39:56+08:00">
+                2019-10-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/顺序表/" itemprop="url" rel="index">
+                    <span itemprop="name">顺序表</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>下面展示一下交互式顺序表的代码（可白嫖，不解释）：</p>
+<a id="more"></a>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//author :刘力 </span></span><br><span class="line"><span class="comment">//date :2019.10.17</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXLEN 100</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> elementType;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sList</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	elementType data[MAXLEN];</span><br><span class="line">	<span class="keyword">int</span> listLen;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">sList</span> <span class="title">seqList</span>;</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">initialList</span><span class="params">(seqList *)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">createList</span><span class="params">(seqList *)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">TraverList</span><span class="params">(seqList)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getElement</span><span class="params">(seqList ,<span class="keyword">int</span> )</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">listInsert</span><span class="params">(seqList *,elementType ,<span class="keyword">int</span> )</span> </span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">listDelete</span><span class="params">(seqList *,<span class="keyword">int</span> )</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">listInsert1</span><span class="params">(seqList *,elementType )</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CutApart</span><span class="params">(seqList *,seqList &amp;,seqList &amp;)</span></span>;</span><br><span class="line"><span class="function">seqList <span class="title">listOccur</span><span class="params">(seqList ,seqList )</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">DLlistDelete</span><span class="params">(seqList *)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	seqList L;</span><br><span class="line">	seqList *pL;</span><br><span class="line">	pL = &amp;L;</span><br><span class="line">	initialList(pL);</span><br><span class="line">	<span class="keyword">int</span> iIndex,i,iStatu = <span class="number">0</span>;</span><br><span class="line">	elementType x;</span><br><span class="line">	<span class="keyword">do</span></span><br><span class="line">	&#123;</span><br><span class="line">		system(<span class="string">"CLS"</span>);</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"-------------------------------------------------------------------------------"</span>&lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"请输入0到7，选择功能:"</span>&lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"0.退出！"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"1.输入顺序表元素。"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"2.遍历显示顺序表。"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"3.按序号取元素。"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"4.插入元素。"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"5.按位置删除元素。"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"6.在递增顺序表中插入元素。"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"7.将顺序表中的奇数项和偶数项分开放到两个新的顺序表中并显示。"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"8.求两个递增有序的顺序表的交集。"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"9.删除递增顺序表中重复的元素。"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"-------------------------------------------------------------------------------"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span> &lt;&lt; <span class="string">"输入选择项："</span>;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; iIndex;</span><br><span class="line">		fflush(<span class="built_in">stdin</span>);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">switch</span> (iIndex)</span><br><span class="line">		&#123;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">0</span>: </span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">			system(<span class="string">"CLS"</span>);</span><br><span class="line">			createList(pL);</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">			system(<span class="string">"CLS"</span>);</span><br><span class="line">			<span class="keyword">if</span>(L.listLen == <span class="number">0</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">cout</span> &lt;&lt; <span class="string">"顺序表为空表。"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">				system(<span class="string">"pause"</span>);</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			TraverList(L);</span><br><span class="line">			system(<span class="string">"pause"</span>);</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">			system(<span class="string">"CLS"</span>);</span><br><span class="line">			<span class="keyword">if</span>(L.listLen == <span class="number">0</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">cout</span> &lt;&lt; <span class="string">"顺序表为空表。"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">				system(<span class="string">"pause"</span>);</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			TraverList(L);</span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; <span class="string">"请输入待取元素的序号。"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">			<span class="built_in">cin</span> &gt;&gt; i;</span><br><span class="line">			x = getElement(L,i);</span><br><span class="line">			<span class="keyword">if</span>(x == <span class="number">-1</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">cout</span> &lt;&lt; <span class="string">"位置错误。"</span> &lt;&lt; <span class="built_in">endl</span>; </span><br><span class="line">				system(<span class="string">"pause"</span>);</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt;<span class="string">"此元素为: "</span> &lt;&lt; x &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">			system(<span class="string">"pause"</span>);</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">			system(<span class="string">"CLS"</span>);</span><br><span class="line">			<span class="comment">/*if(L.listLen == 0)</span></span><br><span class="line"><span class="comment">			&#123;</span></span><br><span class="line"><span class="comment">				cout &lt;&lt; "顺序表为空表。" &lt;&lt; endl;</span></span><br><span class="line"><span class="comment">				system("pause");</span></span><br><span class="line"><span class="comment">				break;</span></span><br><span class="line"><span class="comment">			&#125;*/</span></span><br><span class="line">			TraverList(L);</span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; <span class="string">"请输入要插入的元素。"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">			<span class="built_in">cin</span> &gt;&gt; x;  </span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; <span class="string">"请输入要插入的序号位置。"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">			<span class="built_in">cin</span> &gt;&gt; i;</span><br><span class="line">			iStatu = listInsert(pL,x,i);</span><br><span class="line">			<span class="keyword">if</span>(iStatu == <span class="number">-1</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">cout</span> &lt;&lt; <span class="string">"插入位置错误。"</span> &lt;&lt; <span class="built_in">endl</span>; </span><br><span class="line">				system(<span class="string">"pause"</span>);</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(iStatu == <span class="number">-2</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">cout</span> &lt;&lt; <span class="string">"表满。"</span> &lt;&lt; <span class="built_in">endl</span>; </span><br><span class="line">				system(<span class="string">"pause"</span>);</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">cout</span> &lt;&lt; <span class="string">"插入成功。"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">				TraverList(L);</span><br><span class="line">				system(<span class="string">"pause"</span>);</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">5</span>:</span><br><span class="line">			system(<span class="string">"CLS"</span>);</span><br><span class="line">			<span class="keyword">if</span>(L.listLen == <span class="number">0</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">cout</span> &lt;&lt; <span class="string">"顺序表为空表。"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">				system(<span class="string">"pause"</span>);</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				TraverList(L);</span><br><span class="line">				<span class="built_in">cout</span> &lt;&lt; <span class="string">"请输入删除位置。"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="built_in">cin</span> &gt;&gt; i;</span><br><span class="line">			iStatu = listDelete(pL,i);</span><br><span class="line">			<span class="keyword">if</span>(iStatu == <span class="number">-1</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">cout</span> &lt;&lt; <span class="string">"删除位置错误。"</span> &lt;&lt; <span class="built_in">endl</span>; </span><br><span class="line">				system(<span class="string">"pause"</span>);</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">cout</span> &lt;&lt; <span class="string">"删除成功。"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">				TraverList(L);</span><br><span class="line">			&#125;</span><br><span class="line">			system(<span class="string">"pause"</span>);</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">6</span>:</span><br><span class="line">			system(<span class="string">"CLS"</span>);</span><br><span class="line">			<span class="keyword">if</span>(L.listLen == <span class="number">0</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">cout</span> &lt;&lt; <span class="string">"顺序表为空表。"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">				system(<span class="string">"pause"</span>);</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				TraverList(L);</span><br><span class="line">				<span class="built_in">cout</span> &lt;&lt; <span class="string">"请输入要插入的元素。"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">				<span class="built_in">cin</span> &gt;&gt; x;</span><br><span class="line">			&#125;</span><br><span class="line">			iStatu = listInsert1(pL,x);</span><br><span class="line">			<span class="keyword">if</span>(iStatu == <span class="number">-1</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">cout</span> &lt;&lt; <span class="string">"表满。"</span> &lt;&lt; <span class="built_in">endl</span>; </span><br><span class="line">				system(<span class="string">"pause"</span>);</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">cout</span> &lt;&lt; <span class="string">"插入成功。"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">				TraverList(L);</span><br><span class="line">				system(<span class="string">"pause"</span>);</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">7</span>:</span><br><span class="line">			system(<span class="string">"CLS"</span>);</span><br><span class="line">			<span class="keyword">if</span>(L.listLen == <span class="number">0</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">cout</span> &lt;&lt; <span class="string">"顺序表为空表。"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">				system(<span class="string">"pause"</span>);</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			seqList One,Two;</span><br><span class="line">			initialList(&amp;One), initialList(&amp;Two);</span><br><span class="line">			CutApart(pL,One,Two);</span><br><span class="line">			TraverList(L);</span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; <span class="string">"偶数项"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">			TraverList(One);</span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; <span class="string">"奇数项"</span> &lt;&lt; <span class="built_in">endl</span>; </span><br><span class="line">			TraverList(Two);</span><br><span class="line">			system(<span class="string">"pause"</span>);</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">8</span>:</span><br><span class="line">			system(<span class="string">"CLS"</span>);</span><br><span class="line">			seqList A, B, C;</span><br><span class="line">			initialList(&amp;A), initialList(&amp;B);</span><br><span class="line">			initialList(&amp;C);</span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; <span class="string">"第一个递增顺序表"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">			createList(&amp;A);</span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; <span class="string">"第二个递增顺序表"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">			createList(&amp;B);	</span><br><span class="line">			C = listOccur(A,B);</span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;	</span><br><span class="line">			TraverList(A), TraverList(B);</span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; <span class="string">"交集顺序表为："</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">			TraverList(C); </span><br><span class="line">			system(<span class="string">"pause"</span>);</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">9</span>:</span><br><span class="line">			system(<span class="string">"CLS"</span>);</span><br><span class="line">			<span class="keyword">if</span>(L.listLen == <span class="number">0</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">cout</span> &lt;&lt; <span class="string">"顺序表为空表。"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">				system(<span class="string">"pause"</span>);</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">int</span> count;</span><br><span class="line">			TraverList(L);</span><br><span class="line">			count = DLlistDelete(pL);</span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; <span class="string">"删除完成。"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">			TraverList(L);</span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; <span class="string">"移动元素次数为："</span> &lt;&lt; count &lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">			system(<span class="string">"pause"</span>);</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">default</span>:</span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; <span class="string">"Selection is error"</span> &lt;&lt; <span class="built_in">endl</span>; </span><br><span class="line">			system(<span class="string">"pause"</span>); </span><br><span class="line">		&#125;</span><br><span class="line">	&#125; <span class="keyword">while</span> (<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//*******************************************************初始化顺序表 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">initialList</span><span class="params">(seqList* L)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	L -&gt; listLen = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//*******************************************************输入顺序表元素 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">createList</span><span class="params">(seqList *L)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">	elementType x;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt; <span class="string">"请输入顺序表元素（以-9999结束）"</span>&lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt; x;</span><br><span class="line">	<span class="keyword">while</span> (x != <span class="number">-9999</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		L -&gt; data[i] = x;</span><br><span class="line">		i++;</span><br><span class="line">		L -&gt; listLen++;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; x;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//********************************************************遍历显示顺序表元素</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">TraverList</span><span class="params">(seqList L)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;L.listLen;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; L.data[i] &lt;&lt; <span class="string">"  "</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"> &#125;</span><br><span class="line"><span class="comment">//**********************************************************按序号取元素 </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getElement</span><span class="params">(seqList L,<span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(i &lt; <span class="number">1</span>||i &gt; L.listLen)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> L.data[i<span class="number">-1</span>];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//*********************************************************按序号插入元素 </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">listInsert</span><span class="params">(seqList* L,elementType x, <span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> j;</span><br><span class="line">	<span class="keyword">if</span>(i &lt; <span class="number">1</span> || i &gt; L-&gt; listLen + <span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(L -&gt; listLen == MAXLEN)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-2</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(j = L -&gt; listLen - <span class="number">1</span>;j &gt;= i<span class="number">-1</span>; j--)</span><br><span class="line">		&#123;</span><br><span class="line">			L -&gt; data[j+<span class="number">1</span>] = L -&gt; data[j];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	L -&gt; data[i<span class="number">-1</span>] = x;</span><br><span class="line">	L -&gt;  listLen++;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//***************************************************按序号删除元素 </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">listDelete</span><span class="params">(seqList* L, <span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> j;</span><br><span class="line">	<span class="keyword">if</span>(i &lt; <span class="number">1</span> || i &gt; L -&gt; listLen)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(L -&gt; listLen == <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-2</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(j = i;j &lt;= L -&gt; listLen - <span class="number">1</span>;j++ )</span><br><span class="line">		&#123;</span><br><span class="line">			L -&gt; data[j<span class="number">-1</span>]= L -&gt;data[j];</span><br><span class="line">		&#125;</span><br><span class="line">		L -&gt; listLen--;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//****************************************************在递增顺序表中插入元素 </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">listInsert1</span><span class="params">(seqList* L,elementType x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,j;</span><br><span class="line">	<span class="keyword">if</span>(L -&gt; listLen == MAXLEN)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	elementType iTemp;</span><br><span class="line">	i = L -&gt; listLen;</span><br><span class="line">	listInsert(L,x,i+<span class="number">1</span>);</span><br><span class="line">	j = L -&gt; listLen;</span><br><span class="line">	<span class="keyword">while</span>(L -&gt; data[j<span class="number">-1</span>] &lt; L -&gt; data[i<span class="number">-1</span>])</span><br><span class="line">	&#123;</span><br><span class="line">		iTemp = L -&gt; data[j<span class="number">-1</span>];</span><br><span class="line">		L -&gt; data[j<span class="number">-1</span>] = L -&gt; data[i<span class="number">-1</span>];</span><br><span class="line">		L -&gt; data[i<span class="number">-1</span>] = iTemp;</span><br><span class="line">		j--,i--;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//************************************************分开奇偶数元素 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CutApart</span><span class="params">(seqList* L,seqList &amp;A,seqList &amp;B)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i = <span class="number">0</span>,j = <span class="number">0</span>,k = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(i &lt; L -&gt; listLen)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(L -&gt; data[i] % <span class="number">2</span> == <span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			A.data[j] = L -&gt; data[i];</span><br><span class="line">			i++,j++;</span><br><span class="line">			A.listLen++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			B.data[k] = L -&gt; data[i];</span><br><span class="line">			i++,k++;</span><br><span class="line">			B.listLen++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//*************************************************递增顺序表的并集 </span></span><br><span class="line"><span class="function">seqList <span class="title">listOccur</span><span class="params">(seqList A,seqList B)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ia = <span class="number">0</span>,ib = <span class="number">0</span>,ic = <span class="number">0</span>;</span><br><span class="line">	seqList C;</span><br><span class="line">	seqList *pC = &amp;C; </span><br><span class="line">	initialList(pC);</span><br><span class="line">	<span class="keyword">while</span>(ia &lt; A.listLen &amp;&amp; ib &lt; B.listLen)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(A.data[ia] &lt; B.data[ib])</span><br><span class="line">		&#123;</span><br><span class="line">			ia++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (A.data[ia] == B.data[ib])</span><br><span class="line">		&#123;</span><br><span class="line">			pC -&gt; data[ic] = A.data[ia];</span><br><span class="line">			ia++,ib++,ic++;</span><br><span class="line">			pC -&gt; listLen++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			ib++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> C;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//************************************************删除递增顺序表中重复的元素</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">DLlistDelete</span><span class="params">(seqList *L)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i=<span class="number">0</span>, j=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(j &lt; L -&gt; listLen)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(L -&gt; data[j] &gt; L -&gt; data[i])</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(i+<span class="number">1</span> != j)                                         <span class="comment">//如果不相邻就赋值下一个元素 </span></span><br><span class="line">			&#123;</span><br><span class="line">				L -&gt; data[i+<span class="number">1</span>] = L -&gt; data[j];</span><br><span class="line">				count++;                               </span><br><span class="line">			&#125;</span><br><span class="line">			i++,j++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			j++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	L -&gt; listLen = i + <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">return</span> count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/进阶/" rel="tag"># 进阶</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/21/The-flowers-of-war/" rel="next" title="The flowers of war">
+                <i class="fa fa-chevron-left"></i> The flowers of war
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/mdz.png" alt="9s">
+            
+              <p class="site-author-name" itemprop="name">9s</p>
+              <p class="site-description motion-element" itemprop="description">Welcom to my blog!</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ALITA1998" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">9s</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
